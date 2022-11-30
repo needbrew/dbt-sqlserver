@@ -1,5 +1,5 @@
 {% macro sqlserver__create_table_as(temporary, relation, sql) -%}
-   {%- set as_columnstore = config.get('as_columnstore', default=true) -%}
+   {%- set as_columnstore = config.get('as_columnstore', default=true)| bool} -%}
    {% set tmp_relation = relation.incorporate(
    path={"identifier": relation.identifier.replace("#", "") ~ '_temp_view'},
    type='view')-%}
